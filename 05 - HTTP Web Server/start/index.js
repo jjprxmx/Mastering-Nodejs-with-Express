@@ -17,7 +17,6 @@ console.log(module.exports === exports);
 // Blocking vs Non-blocking IO
 const content = fs.readFileSync('./data.js', 'utf8');
 console.log(content);
-
 fs.readFile('./data.js', 'utf8', (err, content) => {
   console.log(content);
 });
@@ -26,12 +25,34 @@ fs.readFile('./data.js', 'utf8', (err, content) => {
 console.log(data);
 
 // Creating a server
-http
-  .createServer((req, res) => {
+http.
+createServer(function (req, res) { 
+
+  switch (req.url) {
+    
+  case '/api/data': 
+  res.setHeader(
+    'Content-Type',
+    'application/json'
+  );
+  res.writeHead(200);
+  res.write(JSON.stringify(data));
+
+  break;
+
+  case '/about':
+    res.setHeader(
+      'Content-Type',
+      'application/json'
+    );
     res.writeHead(200);
+    /*res.write(JSON.stringify({about:os.uptime().toString()}));*/
     res.write(os.uptime().toString());
+
+    break;
+    }
     res.end();
-  })
-  .listen(3000);
+  }).listen(3000);
+
 
 console.log('Listening on port 3000');

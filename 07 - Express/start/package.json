@@ -4,8 +4,8 @@
   "description": "Mastering Node.js with Express Workshop",
   "main": "app.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "nodemon app.js",
+    "dev": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +17,10 @@
     "url": "https://github.com/lvarayut/Mastering-Nodejs-with-Express/issues"
   },
   "homepage": "https://github.com/lvarayut/Mastering-Nodejs-with-Express#readme",
-  "dependencies": {},
+  "dependencies": {
+    "morgan": "^1.10.0"
+  },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.22"
   }
 }
